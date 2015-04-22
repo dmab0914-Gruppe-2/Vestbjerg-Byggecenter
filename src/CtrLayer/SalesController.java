@@ -187,6 +187,7 @@ public class SalesController
             {
                 Customer c = (Customer)p;
                 c.withdrawFromBalance(getTotal());
+                closeSale();
                 return true;
             }//endIf
         }//endIf
