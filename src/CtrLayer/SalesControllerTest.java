@@ -63,6 +63,10 @@ public class SalesControllerTest {
         salesController.addItem("1234");
         salesController.makePaymentPhone("88888888");
         assertEquals(0, p.getQuantity());
-
+        salesController.makeNewSale(1);
+        salesController.addItem("1234");
+        assertFalse(salesController.makePaymentPhone("88888888"));
+        productController.addItems("1234", 100);
+        assertEquals(100, p.getQuantity());
     }
 }
