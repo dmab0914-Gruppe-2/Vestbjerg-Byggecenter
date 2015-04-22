@@ -91,6 +91,33 @@ public class ProductController
 			return d;
 		}
 	}
+	
+	/**
+	 * Adds a single item to a given product.
+	 * @param barcode	Barcode of the product
+	 * @return	true if product exists. false if not.
+	 */
+	public boolean addItem(String barcode) {
+		return addItems(barcode, 1);
+	}
+	
+	/**
+	 * Adds a given amount of items to a given product.
+	 * @param barcode	Barcode of the product
+	 * @param amount	The amount of products to add.
+	 * @return	true if product exists. false if not.
+	 */
+	public boolean addItems(String barcode, int amount) {
+		Product p = findProduct(barcode);
+		if(p != null) {
+			for(int i = 0; i < amount; i++) {
+				p.addItem(new ProductItem());
+			}
+			return true;
+		}
+		
+		return false;
+	}
 
 	/**
 	 * Method changeProduct, this method finds a product by its currently/old barcode and then remember its ID to keep same id 
